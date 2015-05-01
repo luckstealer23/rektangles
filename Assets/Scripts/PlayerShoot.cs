@@ -9,6 +9,7 @@ public class PlayerShoot : MonoBehaviour {
     public float damage = 1;
     public GameObject bullet;
     public float bulletSpeed;
+	public AudioClip audioClip;
 
     float timeToFire = 0;
     Transform firePoint;
@@ -47,6 +48,8 @@ public class PlayerShoot : MonoBehaviour {
         projectile = (Instantiate(bullet, firePoint.position, transform.rotation)) as GameObject;
         BulletScript projectileScript = projectile.GetComponent<BulletScript>();
         projectileScript.Init(bulletSpeed, shootDirection, transform.rotation, 3f, damage);
-        gameObject.GetComponent<AudioSource>().Play();
+
+		AudioSource.PlayClipAtPoint (audioClip, transform.position, 0.08f);
+
     }
 }
