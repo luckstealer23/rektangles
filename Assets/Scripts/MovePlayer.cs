@@ -10,7 +10,7 @@ public class MovePlayer : MonoBehaviour {
 	void Start () {
 	
 	}
-	
+
 	// Update is called once per frame
 	void FixedUpdate () {
         var mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);

@@ -42,7 +42,7 @@ public class PlayerShoot : MonoBehaviour {
     void Shoot()
     {
         Vector2 mousePosition = new Vector2(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y);
-        Vector2 shootDirection = new Vector2(mousePosition.x - firePoint.position.x, mousePosition.y - firePoint.position.y);
+        Vector2 shootDirection = new Vector2(mousePosition.x - transform.position.x, mousePosition.y - transform.position.y);
         GameObject projectile;
         projectile = (Instantiate(bullet, firePoint.position, transform.rotation)) as GameObject;
         BulletScript projectileScript = projectile.GetComponent<BulletScript>();
