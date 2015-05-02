@@ -13,7 +13,6 @@ GameObject:
   - 50: {fileID: 5027160}
   - 60: {fileID: 6098794}
   - 114: {fileID: 11435472}
-  - 114: {fileID: 11409130}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: Bullet
@@ -82,18 +81,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &11409130
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 109322}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e6a1e5a0d49d9bb4c88793bccfb8ee43, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mainCamera: {fileID: 0}
 --- !u!114 &11435472
 MonoBehaviour:
   m_ObjectHideFlags: 1
