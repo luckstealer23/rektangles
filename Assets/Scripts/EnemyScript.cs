@@ -41,12 +41,12 @@ public class EnemyScript : MonoBehaviour {
 
     void OnCollisionEnter2D(Collision2D coll)
     {
-        Debug.Log("collision");
+        //Debug.Log("collision");
         if (coll.gameObject.tag == "Bullet")
         {
             GameObject bullet = coll.gameObject;
             hitpoints -= bullet.GetComponent<BulletScript>().damagePoints;
-            //(bullet.GetComponent<BulletScript>().impactAnimation, new Vector3(collPoint.point.x,collPoint.point.y, 0) , transform.rotation);
+
             Instantiate(bullet.GetComponent<BulletScript>().impactAnimation, new Vector3(coll.contacts[0].point.x, coll.contacts[0].point.y, 0) , transform.rotation);
 
 			AudioSource.PlayClipAtPoint (audioClip, transform.position);
