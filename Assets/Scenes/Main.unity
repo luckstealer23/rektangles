@@ -180,6 +180,10 @@ Prefab:
       propertyPath: m_AngularDrag
       value: .100000001
       objectReference: {fileID: 0}
+    - target: {fileID: 9595682, guid: 825ad3ca959df294598eeaf3d4107b65, type: 2}
+      propertyPath: m_CullingMode
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 825ad3ca959df294598eeaf3d4107b65, type: 2}
   m_IsPrefabParent: 0
@@ -1523,7 +1527,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
 --- !u!1001 &1043416017
 Prefab:
   m_ObjectHideFlags: 0
