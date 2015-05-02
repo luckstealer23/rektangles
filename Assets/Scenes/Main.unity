@@ -829,11 +829,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f90bc46c6ab92db4cb15439dce61ba45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 577849893}
-  damping: 1
   lookAheadFactor: 3
-  lookAheadReturnSpeed: .5
-  lookAheadMoveThreshold: .100000001
+  enemyFactor: .100000001
+  maxEnemyFactor: 10
 --- !u!4 &585852604 stripped
 Transform:
   m_PrefabParentObject: {fileID: 473322, guid: 46571870162a97143a49e8c2465634fd, type: 2}

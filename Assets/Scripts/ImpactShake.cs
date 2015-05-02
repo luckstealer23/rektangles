@@ -6,7 +6,6 @@ public class ImpactShake : MonoBehaviour
 	
 	Vector3 originalCameraPosition;
 	
-	float shakeAmt = 1;
 	
 	public Camera mainCamera;
 
