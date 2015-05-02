@@ -170,27 +170,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 414026, guid: 825ad3ca959df294598eeaf3d4107b65, type: 2}
       propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 105262, guid: 825ad3ca959df294598eeaf3d4107b65, type: 2}
-      propertyPath: m_Name
-      value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 11434256, guid: 825ad3ca959df294598eeaf3d4107b65, type: 2}
-      propertyPath: damage
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 11434256, guid: 825ad3ca959df294598eeaf3d4107b65, type: 2}
-      propertyPath: fireRate
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 21297164, guid: 825ad3ca959df294598eeaf3d4107b65, type: 2}
-      propertyPath: m_SortingLayerID
-      value: -119614357
-      objectReference: {fileID: 0}
-    - target: {fileID: 11434256, guid: 825ad3ca959df294598eeaf3d4107b65, type: 2}
-      propertyPath: bulletSpeed
-      value: 65
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 21297164, guid: 825ad3ca959df294598eeaf3d4107b65, type: 2}
       propertyPath: m_Enabled
@@ -1661,7 +1641,7 @@ Transform:
   - {fileID: 1532307128}
   - {fileID: 604013432}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
 --- !u!4 &1056565621 stripped
 Transform:
   m_PrefabParentObject: {fileID: 473322, guid: 46571870162a97143a49e8c2465634fd, type: 2}

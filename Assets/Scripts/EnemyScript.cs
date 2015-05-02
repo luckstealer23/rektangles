@@ -7,7 +7,7 @@ public class EnemyScript : MonoBehaviour {
     public float speed;
     private Transform player;
     public float hitpoints;
-    
+	public AudioClip audioClip;
 
 
 	// Use this for initialization
@@ -46,8 +46,10 @@ public class EnemyScript : MonoBehaviour {
         {
             GameObject bullet = coll.gameObject;
             hitpoints -= bullet.GetComponent<BulletScript>().damagePoints;
+
             Instantiate(bullet.GetComponent<BulletScript>().impactAnimation, new Vector3(coll.contacts[0].point.x, coll.contacts[0].point.y, 0) , transform.rotation);
-            gameObject.GetComponent<AudioSource>().Play();
+
+			AudioSource.PlayClipAtPoint (audioClip, transform.position);
             if (Random.Range(1,6) == 2)
             {
                 Instantiate(bullet.GetComponent<BulletScript>().explosionAnimation, new Vector3(coll.contacts[0].point.x, coll.contacts[0].point.y, 0), transform.rotation);
