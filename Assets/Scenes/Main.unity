@@ -172,6 +172,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11460940, guid: 825ad3ca959df294598eeaf3d4107b65, type: 2}
+      propertyPath: speed
+      value: 12
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 825ad3ca959df294598eeaf3d4107b65, type: 2}
   m_IsPrefabParent: 0
@@ -746,6 +750,7 @@ GameObject:
   - 124: {fileID: 577849890}
   - 81: {fileID: 577849889}
   - 114: {fileID: 577849894}
+  - 114: {fileID: 577849895}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -832,6 +837,18 @@ MonoBehaviour:
   lookAheadFactor: 3
   enemyFactor: .100000001
   maxEnemyFactor: 10
+--- !u!114 &577849895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 577849888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42039ff34bc453f469dd688f98c0df2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cam: {fileID: 577849892}
 --- !u!4 &585852604 stripped
 Transform:
   m_PrefabParentObject: {fileID: 473322, guid: 46571870162a97143a49e8c2465634fd, type: 2}

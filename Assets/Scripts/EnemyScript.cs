@@ -8,11 +8,14 @@ public class EnemyScript : MonoBehaviour {
     private Transform player;
     public float hitpoints;
 	public AudioClip audioClip;
-
+    Camera cam;
+    Screenshake shake;
 
 	// Use this for initialization
 	void Start () {
         player = GameObject.Find("Player").transform;
+        cam = GameObject.FindObjectOfType<Camera>();
+        shake = (Screenshake) cam.GetComponent(typeof (Screenshake));
 	}
 	
 	// Update is called once per frame
@@ -49,10 +52,13 @@ public class EnemyScript : MonoBehaviour {
 
             Instantiate(bullet.GetComponent<BulletScript>().impactAnimation, new Vector3(coll.contacts[0].point.x, coll.contacts[0].point.y, 0) , transform.rotation);
 
+
 			AudioSource.PlayClipAtPoint (audioClip, transform.position);
             if (Random.Range(1,6) == 2)
             {
                 Instantiate(bullet.GetComponent<BulletScript>().explosionAnimation, new Vector3(coll.contacts[0].point.x, coll.contacts[0].point.y, 0), transform.rotation);
+                // start screenshake
+                shake.Shake(2f, 1f, 0.8f);
             }
             Destroy(bullet);
         }

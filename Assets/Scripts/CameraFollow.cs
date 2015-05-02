@@ -64,7 +64,7 @@ public class CameraFollow : MonoBehaviour
 		if (target.position != lastTargetPosition || notMoving > 2) {
 			Vector3 change = target.position - lastTargetPosition;
 			change.Normalize();
-			lookAheadPos = new Vector3 (lookAheadFactor * aspect * (change.x), lookAheadFactor * (change.y));
+			lookAheadPos = new Vector3 (lookAheadFactor * aspect * (change.x), lookAheadFactor * (change.y), 0f);
 			pos += lookAheadPos;
 		
 
@@ -76,6 +76,7 @@ public class CameraFollow : MonoBehaviour
 				Vector3 dist = enemy.transform.position - target.position;
 				enemyPos.x += dist.x * enemyFactor;
 				enemyPos.y += dist.y * enemyFactor;
+                enemyPos.z = 0f;
 			}
 			pos += enemyPos;
 
