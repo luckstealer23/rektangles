@@ -7,12 +7,12 @@ public class Spawner : MonoBehaviour {
     float diff;
 
 
-    GameObject spawnEnemy()
+    /*GameObject spawnEnemy()
     {
         return Instantiate() as GameObject;
         //TODO
     }
-
+    */
     public void setSpawnPoint(Vector3 spawnPoint)
     {
         this.spawnPoint = spawnPoint;
@@ -29,7 +29,7 @@ public class Spawner : MonoBehaviour {
 
     public void setDifficulty(float difficulty)
     {
-        this.diff = spawnPoint;
+       // this.diff = spawnPoint;
     }
 
 	// Use this for initialization
