@@ -158,7 +158,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95f2227bb6ebbd74d9a6da51966d17f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5.5
+  speed: 8
   hitpoints: 3
   audioClip: {fileID: 8300000, guid: 80b041d2c4ea1a34cb6d025dabb768c4, type: 3}
 --- !u!212 &21290470

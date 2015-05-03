@@ -172,6 +172,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 11460940, guid: 825ad3ca959df294598eeaf3d4107b65, type: 2}
+      propertyPath: speed
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 825ad3ca959df294598eeaf3d4107b65, type: 2}
   m_IsPrefabParent: 0
@@ -2361,60 +2365,6 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 473322, guid: 46571870162a97143a49e8c2465634fd, type: 2}
   m_PrefabInternal: {fileID: 1387263108}
---- !u!1 &1880843736
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 1880843738}
-  - 212: {fileID: 1880843737}
-  m_Layer: 0
-  m_Name: Background Tile
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!212 &1880843737
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1880843736}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_Materials:
-  - {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
-  m_SubsetIndices: 
-  m_StaticBatchRoot: {fileID: 0}
-  m_UseLightProbes: 1
-  m_ReflectionProbeUsage: 1
-  m_ProbeAnchor: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_ImportantGI: 0
-  m_AutoUVMaxDistance: .5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1604025353
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 7a08ae7ff13b22041ad7cbcf29ae67fc, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
---- !u!4 &1880843738
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1880843736}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 15.3001947, y: .71828407, z: -5.8515625}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 2137720177}
-  m_RootOrder: 0
 --- !u!4 &1901626340 stripped
 Transform:
   m_PrefabParentObject: {fileID: 473322, guid: 46571870162a97143a49e8c2465634fd, type: 2}
@@ -2440,6 +2390,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1943406771}
   - 114: {fileID: 1943406770}
+  - 114: {fileID: 1943406772}
   m_Layer: 0
   m_Name: GM
   m_TagString: Untagged
@@ -2470,6 +2421,23 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!114 &1943406772
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1943406769}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c8e68b4121383a4c9f0645148985f4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  columns: 16
+  rows: 12
+  floorTiles:
+  - {fileID: 187106, guid: 67df1bc99775e3947b4a24837748bf73, type: 2}
+  tileSize: 5
+  boardZ: 0
 --- !u!1001 &1990694733
 Prefab:
   m_ObjectHideFlags: 0
@@ -2662,34 +2630,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 46571870162a97143a49e8c2465634fd, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &2137720176
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 2137720177}
-  m_Layer: 0
-  m_Name: BackgroundTileContainer
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2137720177
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2137720176}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -17.1001949, y: -.928284049, z: 5.8515625}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1880843738}
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
 --- !u!1001 &2142357100
 Prefab:
   m_ObjectHideFlags: 0
