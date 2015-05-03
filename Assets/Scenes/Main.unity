@@ -835,8 +835,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lookAheadFactor: 5
-  enemyFactor: .100000001
-  maxEnemyFactor: 8
+  enemyDistance: 20
+  zoomFactor: 1
 --- !u!114 &577849895
 MonoBehaviour:
   m_ObjectHideFlags: 0
