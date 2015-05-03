@@ -10,6 +10,7 @@ public class CameraFollow : MonoBehaviour
 	public int minDistance = 20;
 	public float zoomFactor = 1;
     public float zoomSpeed = 0.08f;
+    public float shootLookAheadFactor;
 
 	Transform target;
     float offsetZ;
@@ -72,6 +73,13 @@ public class CameraFollow : MonoBehaviour
             targetZoom = zoom + zoom * closeness * zoomFactor;
         }
         else targetZoom = zoom;
+
+        Vector2 mousePosition = new Vector2(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y);
+        Vector2 shootDirection = new Vector2(mousePosition.x - target.transform.position.x, mousePosition.y - target.transform.position.y);
+        shootDirection.Normalize();
+        pos.x += shootDirection.x * shootLookAheadFactor;
+        pos.y += shootDirection.y * shootLookAheadFactor;
+
 
         from = cam.orthographicSize;
         cam.orthographicSize = Mathf.Lerp(from, targetZoom, zoomSpeed);
