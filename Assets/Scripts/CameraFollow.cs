@@ -7,8 +7,9 @@ public class CameraFollow : MonoBehaviour
     
     //public float damping = 1;
     public float lookAheadFactor = 20;
-	public int enemyDistance = 20;
+	public int minDistance = 20;
 	public float zoomFactor = 1;
+    public float zoomSpeed = 0.08f;
 
 	Transform target;
     float offsetZ;
@@ -37,7 +38,7 @@ public class CameraFollow : MonoBehaviour
 		cam = gameObject.GetComponent<Camera> ();
 		aspect = cam.aspect;
 		zoom = cam.orthographicSize;
-		enemyDistanceSqr = enemyDistance * enemyDistance;
+        enemyDistanceSqr = minDistance * minDistance;
     }
 
     // Update is called once per frame
@@ -67,13 +68,13 @@ public class CameraFollow : MonoBehaviour
 
         if (furthestEnemy != null)
         {
-            float closeness = (furthestEnemy.transform.position - target.position).sqrMagnitude / (enemyDistance * enemyDistance);
+            float closeness = (furthestEnemy.transform.position - target.position).sqrMagnitude / enemyDistanceSqr;
             targetZoom = zoom + zoom * closeness * zoomFactor;
         }
         else targetZoom = zoom;
 
         from = cam.orthographicSize;
-        cam.orthographicSize = Mathf.Lerp(from, targetZoom, 0.08f);
+        cam.orthographicSize = Mathf.Lerp(from, targetZoom, zoomSpeed);
 
 		transform.position = Vector3.SmoothDamp (transform.position, pos, ref currentVelocity, 0.3f);
 		lastTargetPosition = target.position;
