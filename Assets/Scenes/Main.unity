@@ -834,9 +834,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f90bc46c6ab92db4cb15439dce61ba45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lookAheadFactor: 3
+  lookAheadFactor: 5
   enemyFactor: .100000001
-  maxEnemyFactor: 10
+  maxEnemyFactor: 8
 --- !u!114 &577849895
 MonoBehaviour:
   m_ObjectHideFlags: 0
