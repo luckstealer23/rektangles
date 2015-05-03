@@ -7,8 +7,8 @@ public class CameraFollow : MonoBehaviour
     
     //public float damping = 1;
     public float lookAheadFactor = 20;
-	public float enemyFactor = 0.1f;
-	public int maxEnemyFactor = 40;
+	public int enemyDistance = 20;
+	public float zoomFactor = 1;
 
 	Transform target;
     float offsetZ;
@@ -18,8 +18,13 @@ public class CameraFollow : MonoBehaviour
 	Vector3 enemyPos;
 	Vector3 pos;
 	GameObject[] enemies;
-	int notMoving;
+	Camera cam;
 	float aspect;
+	float zoom;
+    float targetZoom;
+    float from;
+	int enemyDistanceSqr;
+
 
     // Use this for initialization
     void Start()
@@ -29,8 +34,10 @@ public class CameraFollow : MonoBehaviour
         lastTargetPosition = target.position;
 		offsetZ = transform.position.z;
 		currentVelocity = Vector3.zero;
-		notMoving = 0;
-		aspect = gameObject.GetComponent<Camera>().aspect;
+		cam = gameObject.GetComponent<Camera> ();
+		aspect = cam.aspect;
+		zoom = cam.orthographicSize;
+		enemyDistanceSqr = enemyDistance * enemyDistance;
     }
 
     // Update is called once per frame
@@ -46,22 +53,29 @@ public class CameraFollow : MonoBehaviour
 		pos += lookAheadPos;
 
 		enemies = GameObject.FindGameObjectsWithTag ("Enemy");
-		enemyPos = Vector3.zero;
+		GameObject furthestEnemy = null;
 		foreach (GameObject enemy in enemies) {
-			if (Mathf.Abs (enemyPos.x) > maxEnemyFactor || Mathf.Abs (enemyPos.y) > maxEnemyFactor)
-				break;
+
 			Vector3 dist = enemy.transform.position - target.position;
-			enemyPos.x += dist.x * enemyFactor;
-			enemyPos.y += dist.y * enemyFactor;
-               enemyPos.z = 0f;
+
+			if(dist.sqrMagnitude > enemyDistanceSqr)
+				break;
+
+            if (furthestEnemy == null || (furthestEnemy.transform.position - target.position).sqrMagnitude < dist.sqrMagnitude)
+				furthestEnemy = enemy;
 		}
-		pos += enemyPos;
+
+        if (furthestEnemy != null)
+        {
+            float closeness = (furthestEnemy.transform.position - target.position).sqrMagnitude / (enemyDistance * enemyDistance);
+            targetZoom = zoom + zoom * closeness * zoomFactor;
+        }
+        else targetZoom = zoom;
+
+        from = cam.orthographicSize;
+        cam.orthographicSize = Mathf.Lerp(from, targetZoom, 0.08f);
 
 		transform.position = Vector3.SmoothDamp (transform.position, pos, ref currentVelocity, 0.3f);
-
 		lastTargetPosition = target.position;
-
-
-
     }
 }
