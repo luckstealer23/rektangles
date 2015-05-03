@@ -2391,6 +2391,7 @@ GameObject:
   - 4: {fileID: 1943406771}
   - 114: {fileID: 1943406770}
   - 114: {fileID: 1943406772}
+  - 114: {fileID: 1943406773}
   m_Layer: 0
   m_Name: GM
   m_TagString: Untagged
@@ -2438,6 +2439,20 @@ MonoBehaviour:
   - {fileID: 187106, guid: 67df1bc99775e3947b4a24837748bf73, type: 2}
   tileSize: 5
   boardZ: 0
+--- !u!114 &1943406773
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1943406769}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fb15d399e5c15242bc25277a4c84a13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnPoint: {x: 0, y: 0, z: 0}
+  diff: 1
+  enemy: {fileID: 155430, guid: 46571870162a97143a49e8c2465634fd, type: 2}
 --- !u!1001 &1990694733
 Prefab:
   m_ObjectHideFlags: 0

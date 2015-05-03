@@ -3,39 +3,36 @@ using System.Collections;
 
 public class Spawner : MonoBehaviour {
 
-    Vector3 spawnPoint;
-    float diff;
+    public Vector3 spawnPoint;
+    public float diff;
+    public GameObject enemy;
 
 
-    /*GameObject spawnEnemy()
+    public GameObject spawnEnemy()
     {
-        return Instantiate() as GameObject;
-        //TODO
+        return Instantiate(enemy, spawnPoint, new Quaternion()) as GameObject;
     }
-    */
+    
     public void setSpawnPoint(Vector3 spawnPoint)
     {
         this.spawnPoint = spawnPoint;
     }
-    public void setEnemy(GameObject asdf)
+    public void setEnemy(GameObject enemy)
     {
-        //TODO
+        this.enemy = enemy;
     }
-
     public void setSpawnPoint(Vector2 spawnPoint)
     {
         this.spawnPoint = new Vector3(spawnPoint.x, spawnPoint.y, 0f);
     }
-
     public void setDifficulty(float difficulty)
     {
-       // this.diff = spawnPoint;
+        this.diff = difficulty;
     }
 
 	// Use this for initialization
 	void Start () {
-        spawnPoint = Vector3.zero;
-        diff = 1;
+
 	}
 	
 }
