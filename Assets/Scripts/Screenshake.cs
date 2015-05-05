@@ -32,16 +32,8 @@ public class Screenshake : MonoBehaviour {
             shakeStrength = shakeStrength * shakeDecay;
             
         }
-        else if (shakeStrength < 0.01f)
-        {
-            time = 0f;
-            Debug.Log("strength");
-        }
-        else
-        {
-            time = 0f;
-            Debug.Log("time");
-        }
+        else if (shakeStrength < 0.01f) time = 0f;
+        else time = 0f;
     
 	}
 }

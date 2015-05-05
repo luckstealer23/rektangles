@@ -8,6 +8,7 @@ public class EnemyScript : MonoBehaviour {
     private Transform player;
     public float hitpoints;
 	public AudioClip audioClip;
+    public float damage;
     Camera cam;
     Screenshake shake;
 
@@ -39,6 +40,11 @@ public class EnemyScript : MonoBehaviour {
         {
             Destroy(gameObject);
         }
+    }
+
+    public void destroy()
+    {
+        Destroy(gameObject);
     }
 
 

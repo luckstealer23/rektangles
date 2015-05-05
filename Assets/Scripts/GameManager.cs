@@ -1,39 +1,40 @@
 ﻿using UnityEngine;
 using System.Collections;
-using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour {
 
     Spawner spawner;
-
-	bool spawning;
-	Image img;
-	float timeSinceSpawn;
+    Screenshake shaker;
+    HealthManager healther;
 
 
 	// Use this for initialization
 	void Start () {
         spawner = GetComponent<Spawner>();
-		img =  GameObject.Find("SpawningImg").GetComponent<Image>();
-		timeSinceSpawn = 0;
+        shaker = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Screenshake>();
+        healther = GetComponent<HealthManager>();
+        
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetKeyDown (KeyCode.S))
-			spawning = !spawning;
-        
-		spawn ();
+		
 	}
 
-	void spawn(){
-		if (spawning && timeSinceSpawn > 1) {
-			spawner.spawnEnemy ();
-			img.color = Color.red;
-			timeSinceSpawn = 0;
-		} else if(spawning) timeSinceSpawn += Time.deltaTime;
-		else img.color = Color.green;
-			
+    public void die()
+    {
+        //TODO: Play death animation
+        //TODO: Game Over screen; unload level
+    }
 
-	}
+    public void hit(float damage)
+    {
+        //TODO: Play hit animation (blinking?)
+        //TODO: Explosion?
+
+        healther.updateHealth(damage);
+        shaker.Shake(3f, 1.5f, 0.8f);
+
+    }
+
 }

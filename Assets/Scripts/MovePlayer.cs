@@ -6,10 +6,12 @@ public class MovePlayer : MonoBehaviour {
     public float speed;
 
 	Animator animator;
+    GameManager gm;
 
 	// Use this for initialization
 	void Start () {
 		animator = GetComponent<Animator>();
+        gm = GameObject.Find("GM").GetComponent<GameManager>();
 	}
 
 	// Update is called once per frame
@@ -27,4 +29,15 @@ public class MovePlayer : MonoBehaviour {
 		} else
 			animator.SetBool ("moving", false);
 	}
+
+    void OnCollisionEnter2D(Collision2D coll)
+    {
+        if (coll.gameObject.tag == "Enemy")
+        {
+            EnemyScript enemy = coll.gameObject.GetComponent<EnemyScript>();
+            gm.hit(enemy.damage);
+            enemy.destroy();
+
+        }
+    }
 }

@@ -1,11 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class Spawner : MonoBehaviour {
 
     public Vector3 spawnPoint;
     public float diff;
     public GameObject enemy;
+
+
+    bool spawning;
+    Image img;
+    float timeSinceSpawn;
 
 
     public GameObject spawnEnemy()
@@ -30,9 +36,32 @@ public class Spawner : MonoBehaviour {
         this.diff = difficulty;
     }
 
+    void spawn()
+    {
+        if (spawning && timeSinceSpawn > 1)
+        {
+            spawnEnemy();
+            img.color = Color.red;
+            timeSinceSpawn = 0;
+        }
+        else if (spawning) timeSinceSpawn += Time.deltaTime;
+        else img.color = Color.green;
+
+
+    }
+
 	// Use this for initialization
 	void Start () {
-
+        img = GameObject.Find("SpawningImg").GetComponent<Image>();
+        timeSinceSpawn = 0;
 	}
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.S))
+            spawning = !spawning;
+
+        spawn();
+    }
 	
 }
