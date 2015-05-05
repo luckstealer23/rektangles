@@ -31,9 +31,9 @@ public class GameManager : MonoBehaviour {
 			spawner.spawnEnemy ();
 			img.color = Color.red;
 			timeSinceSpawn = 0;
-		} else {
-			img.color = Color.green;
-			timeSinceSpawn += Time.deltaTime;
-		}
+		} else if(spawning) timeSinceSpawn += Time.deltaTime;
+		else img.color = Color.green;
+			
+
 	}
 }
