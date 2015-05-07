@@ -42,8 +42,20 @@ public class PlayerShoot : MonoBehaviour {
 
     void Shoot()
     {
-        Vector2 mousePosition = new Vector2(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y);
-        Vector2 shootDirection = new Vector2(mousePosition.x - transform.position.x, mousePosition.y - transform.position.y);
+        Vector2 shootDirection;
+
+        //if (Input.GetJoystickNames()[0] == "Controller (XBOX One For Windows")
+        {
+            shootDirection = new Vector2(Input.GetAxis("RightStickHorizontal"), Input.GetAxis("RightStickVertical"));
+            Debug.Log(shootDirection);
+        }
+       /* else
+        {
+            Vector2 mousePosition = new Vector2(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y);
+            shootDirection = new Vector2(mousePosition.x - transform.position.x, mousePosition.y - transform.position.y);
+        }  
+        */
+
         GameObject projectile;
         projectile = (Instantiate(bullet, firePoint.position, transform.rotation)) as GameObject;
         BulletScript projectileScript = projectile.GetComponent<BulletScript>();
@@ -51,5 +63,11 @@ public class PlayerShoot : MonoBehaviour {
 
 		AudioSource.PlayClipAtPoint (audioClip, transform.position, 0.08f);
 
+        int i = Input.GetJoystickNames().Length;
+        for (int f = 0; f < i; f++)
+        {
+            Debug.Log(Input.GetJoystickNames()[f]);
+            Debug.Log(f);
+        }
     }
 }
