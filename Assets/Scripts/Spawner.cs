@@ -38,7 +38,7 @@ public class Spawner : MonoBehaviour {
 
     void spawn()
     {
-        if (spawning && timeSinceSpawn > 1)
+        if (spawning && timeSinceSpawn > 0.3f)
         {
             spawnEnemy();
             img.color = Color.red;
@@ -58,7 +58,7 @@ public class Spawner : MonoBehaviour {
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.S))
+        if (Input.GetKeyDown(KeyCode.T))
             spawning = !spawning;
 
         spawn();
