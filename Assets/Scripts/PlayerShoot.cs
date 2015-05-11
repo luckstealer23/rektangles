@@ -44,17 +44,17 @@ public class PlayerShoot : MonoBehaviour {
     {
         Vector2 shootDirection;
 
-        //if (Input.GetJoystickNames()[0] == "Controller (XBOX One For Windows")
+        if (Input.GetJoystickNames()[0] == "Controller (XBOX One For Windows)")
         {
             shootDirection = new Vector2(Input.GetAxis("RightStickHorizontal"), Input.GetAxis("RightStickVertical"));
             Debug.Log(shootDirection);
         }
-       /* else
+        else
         {
             Vector2 mousePosition = new Vector2(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y);
             shootDirection = new Vector2(mousePosition.x - transform.position.x, mousePosition.y - transform.position.y);
         }  
-        */
+        
 
         GameObject projectile;
         projectile = (Instantiate(bullet, firePoint.position, transform.rotation)) as GameObject;
