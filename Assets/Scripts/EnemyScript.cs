@@ -64,7 +64,7 @@ public class EnemyScript : MonoBehaviour {
             {
                 Instantiate(bullet.GetComponent<BulletScript>().explosionAnimation, new Vector3(coll.contacts[0].point.x, coll.contacts[0].point.y, 0), transform.rotation);
                 // start screenshake
-                shake.Shake(2f, 1f, 0.8f);
+                shake.Shake(2f, 0.8f);
             }
             Destroy(bullet);
         }

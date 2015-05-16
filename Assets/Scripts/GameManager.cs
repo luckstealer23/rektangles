@@ -33,7 +33,7 @@ public class GameManager : MonoBehaviour {
         //TODO: Explosion?
 
         healther.updateHealth(damage);
-        shaker.Shake(3f, 1.5f, 0.8f);
+        //shaker.Shake(3f, 1.5f, 0.8f);
 
     }
 
