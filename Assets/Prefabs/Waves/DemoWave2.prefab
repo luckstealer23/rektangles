@@ -1,50 +1,51 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &108664
+--- !u!1 &194818
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 451608}
-  - 114: {fileID: 11404284}
+  - 4: {fileID: 413458}
+  - 114: {fileID: 11483060}
   m_Layer: 0
-  m_Name: MapGenerator
+  m_Name: DemoWave2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &451608
+--- !u!4 &413458
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 108664}
+  m_GameObject: {fileID: 194818}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.16287899, y: 1.91842842, z: 5.8515625}
+  m_LocalPosition: {x: -4.39590168, y: 5.07276964, z: 5.8515625}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!114 &11404284
+--- !u!114 &11483060
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 108664}
+  m_GameObject: {fileID: 194818}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f74dab4402d2f34a85362636b480656, type: 3}
+  m_Script: {fileID: 11500000, guid: 3bed9a7b20a3c3144a20e8991833154d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  columns: 18
-  rows: 12
-  floorTiles:
-  - {fileID: 187106, guid: 67df1bc99775e3947b4a24837748bf73, type: 2}
-  tileSize: 5
-  boardZ: 0
+  EnemiesToSpawn:
+  - EnemyPrefab: {fileID: 155430, guid: 46571870162a97143a49e8c2465634fd, type: 2}
+    EnemyAmount: 100
+    SpawnPriority: 2
+  SpawnDelay: .100000001
+  DifficultyLevel: 1
+  MaxWaveLength: 30
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -54,5 +55,5 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 108664}
+  m_RootGameObject: {fileID: 194818}
   m_IsPrefabParent: 1

@@ -66,8 +66,8 @@ public class PlayerShoot : MonoBehaviour {
         int i = Input.GetJoystickNames().Length;
         for (int f = 0; f < i; f++)
         {
-            Debug.Log(Input.GetJoystickNames()[f]);
-            Debug.Log(f);
+         //   Debug.Log(Input.GetJoystickNames()[f]);
+           // Debug.Log(f);
         }
     }
 }
