@@ -28,19 +28,33 @@ public class CameraFollow : MonoBehaviour
 	int enemyDistanceSqr;
 
 
+    //called by GM
+    public void StartUp ()
+    {
+        //Get player
+        //target = GameObject.Find("Player").transform;
+        target = GameObject.FindGameObjectWithTag("Player").transform;
+        lastTargetPosition = target.position;
+        offsetZ = transform.position.z;
+        currentVelocity = Vector3.zero;
+        cam = gameObject.GetComponent<Camera>();
+        aspect = cam.aspect;
+        zoom = cam.orthographicSize;
+        enemyDistanceSqr = minDistance * minDistance;
+    }
+
+
+
+
+
     // Use this for initialization
     void Start()
     {
-		//Get player
-		target = GameObject.Find("Player").transform;
-        lastTargetPosition = target.position;
-		offsetZ = transform.position.z;
-		currentVelocity = Vector3.zero;
-		cam = gameObject.GetComponent<Camera> ();
-		aspect = cam.aspect;
-		zoom = cam.orthographicSize;
-        enemyDistanceSqr = minDistance * minDistance;
+		//moved stuff to StartUp() so it can be called by the GM at the point in time it is needed, not automatically
     }
+
+
+
 
     // Update is called once per frame
     void FixedUpdate()

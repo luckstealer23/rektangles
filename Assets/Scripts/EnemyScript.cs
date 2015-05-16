@@ -14,7 +14,7 @@ public class EnemyScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        player = GameObject.Find("Player").transform;
+        player = GameObject.FindGameObjectWithTag("Player").transform;
         cam = GameObject.FindObjectOfType<Camera>();
         shake = (Screenshake) cam.GetComponent(typeof (Screenshake));
 	}

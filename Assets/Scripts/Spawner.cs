@@ -40,7 +40,7 @@ public class Spawner : MonoBehaviour {
     {
         if (spawning && timeSinceSpawn > 0.3f)
         {
-            spawnEnemy();
+            spawnEnemy().name = "Enemy1";
             img.color = Color.red;
             timeSinceSpawn = 0;
         }
@@ -62,6 +62,12 @@ public class Spawner : MonoBehaviour {
             spawning = !spawning;
 
         spawn();
+
+
+        //TBR Start
+        if (Input.GetKey(KeyCode.F))
+            spawnEnemy().transform.position = new Vector3(20, 30, 0);
+        //TBR End
     }
 	
 }

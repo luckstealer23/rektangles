@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Random = UnityEngine.Random;
 
-public class GenerateBackground : MonoBehaviour {
+public class GenerateMap : MonoBehaviour {
 
     public int columns = 16;
     public int rows = 9;
@@ -42,9 +42,15 @@ public class GenerateBackground : MonoBehaviour {
     
 
 	// Use this for initialization
-	void Start () {
+
+    public void Generate ()
+    {
         InitialiseList();
         SetupFloor();
+    }
+
+	void Start () {
+        
 	}
 	
 	// Update is called once per frame
