@@ -10,7 +10,13 @@ public class GenerateMap : MonoBehaviour {
     public GameObject[] floorTiles;
     public float tileSize;
     public float boardZ;
+    //just a GO with a boxcollider2D
+    public GameObject boardWallPrefab;
+
     //add more types of tiles here if wished; e.g. walls/enemy spawns/traps
+    public Vector3 center;
+    float width;
+    float heigth;
 
     private Transform boardHolder;
     private List<Vector3> gridPositions = new List<Vector3>();
@@ -19,15 +25,15 @@ public class GenerateMap : MonoBehaviour {
     {
         gridPositions.Clear();
 
-        for (int x = 1; x < columns -1; x++)
+        for (int x = 1; x <= columns; x++)
         {
-            for (int y = 1; y < rows - 1; y++)
+            for (int y = 1; y <= rows; y++)
             {
                 gridPositions.Add(new Vector3(x * tileSize, y * tileSize, boardZ));
             }
         }
     }
-
+     
     void SetupFloor ()
     {
         boardHolder = new GameObject("Board").transform;
@@ -50,7 +56,26 @@ public class GenerateMap : MonoBehaviour {
     }
 
 	void Start () {
-        
+        boardHolder = new GameObject("Board").transform;
+        center = new Vector3((columns  + 1) * tileSize * 0.5f , (rows + 1) * tileSize * 0.5f, boardZ);
+        width = columns * tileSize;
+        heigth = rows * tileSize;
+
+        GameObject topWall = Instantiate(boardWallPrefab, new Vector3(center.x, center.y + heigth / 2 + tileSize / 2, boardZ), new Quaternion()) as GameObject;
+        topWall.GetComponent<BoxCollider2D>().size = new Vector2(width + tileSize, tileSize);
+        topWall.transform.SetParent(boardHolder);
+
+        GameObject bottomWall = Instantiate(boardWallPrefab, new Vector3(center.x, center.y - heigth / 2 - tileSize / 2, boardZ), new Quaternion()) as GameObject;
+        bottomWall.GetComponent<BoxCollider2D>().size = new Vector2(width + tileSize, tileSize);
+        bottomWall.transform.SetParent(boardHolder);
+
+        GameObject leftWall = Instantiate(boardWallPrefab, new Vector3(center.x - width / 2 - tileSize / 2, center.y, boardZ), new Quaternion()) as GameObject;
+        leftWall.GetComponent<BoxCollider2D>().size = new Vector2(tileSize, heigth + tileSize);
+        leftWall.transform.SetParent(boardHolder);
+
+        GameObject rightWall = Instantiate(boardWallPrefab, new Vector3(center.x + width / 2 + tileSize / 2, center.y, boardZ), new Quaternion()) as GameObject;
+        rightWall.GetComponent<BoxCollider2D>().size = new Vector2(tileSize, heigth + tileSize);
+        rightWall.transform.SetParent(boardHolder);
 	}
 	
 	// Update is called once per frame

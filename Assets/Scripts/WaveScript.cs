@@ -26,15 +26,10 @@ public class WaveScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        EnemiesToSpawn.Sort(SortByName);
-
-        
+            
 	}
 	
-    private static int SortByName (EnemyInfo e1, EnemyInfo e2)
-    {
-        return e1.SpawnPriority.CompareTo(e2.SpawnPriority);
-    }
+    
 	// Update is called once per frame
 	void Update () {
 	

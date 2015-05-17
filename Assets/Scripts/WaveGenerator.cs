@@ -87,11 +87,12 @@ public class WaveGenerator : MonoBehaviour {
                             Debug.Log("currentEnemyIndex: " + currentEnemyIndex);
                         }
                         //if every enemy has been spawned turn off wave spawning to save on unnecessary calculations
-                        else
+                        else if (waveSpawning)
                         {
                             lastEnemySpawnedTime = 0;
                             waveSpawning = false;
                             difficulty += 1;
+                            Debug.Log(difficulty);
                             waveDelayTimer = Time.time;
 
                             Debug.Log("Wave spawning finished!");
@@ -162,6 +163,7 @@ public class WaveGenerator : MonoBehaviour {
     {
         if (Time.time - waveStartedTime >= thisWave.MaxWaveLength || livingEnemies <= 0)
         {
+            Debug.Log("next wave true");
             return true;
         }
         else

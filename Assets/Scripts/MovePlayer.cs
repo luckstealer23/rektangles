@@ -23,6 +23,7 @@ public class MovePlayer : MonoBehaviour {
         transform.eulerAngles = new Vector3(0, 0, transform.eulerAngles.z);
 
 		Vector3 newPos = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0).normalized * speed / 100;
+        
 		if (newPos != Vector3.zero) {
 			transform.position += newPos;
 			animator.SetBool ("moving", true);
@@ -32,6 +33,7 @@ public class MovePlayer : MonoBehaviour {
 
     void OnCollisionEnter2D(Collision2D coll)
     {
+        Debug.Log("coll");
         if (coll.gameObject.tag == "Enemy")
         {
             EnemyScript enemy = coll.gameObject.GetComponent<EnemyScript>();

@@ -39,12 +39,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f74dab4402d2f34a85362636b480656, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  columns: 18
+  columns: 16
   rows: 12
   floorTiles:
   - {fileID: 187106, guid: 67df1bc99775e3947b4a24837748bf73, type: 2}
   tileSize: 5
   boardZ: 0
+  boardWallPrefab: {fileID: 150852, guid: 2339b57aed0dc5444bcb37cc873dd7b4, type: 2}
+  center: {x: 0, y: 0, z: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

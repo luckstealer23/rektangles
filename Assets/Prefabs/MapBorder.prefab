@@ -1,57 +1,46 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &119944
+--- !u!1 &150852
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 471174}
-  - 114: {fileID: 11483574}
+  - 4: {fileID: 463008}
+  - 61: {fileID: 6104104}
   m_Layer: 0
-  m_Name: DemoWave1
+  m_Name: MapBorder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &471174
+--- !u!4 &463008
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 119944}
+  m_GameObject: {fileID: 150852}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.39590168, y: 5.07276964, z: 5.8515625}
+  m_LocalPosition: {x: 33.6461143, y: 19.868063, z: 5.859375}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!114 &11483574
-MonoBehaviour:
+--- !u!61 &6104104
+BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 119944}
+  m_GameObject: {fileID: 150852}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3bed9a7b20a3c3144a20e8991833154d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  EnemiesToSpawn:
-  - EnemyPrefab: {fileID: 155430, guid: 46571870162a97143a49e8c2465634fd, type: 2}
-    EnemyAmount: 50
-    SpawnPriority: 1
-  - EnemyPrefab: {fileID: 188008, guid: 665809424e31cb7449fcb13516932580, type: 2}
-    EnemyAmount: 0
-    SpawnPriority: 2
-  - EnemyPrefab: {fileID: 102182, guid: 6cbacc4de0156164889e25fa22257882, type: 2}
-    EnemyAmount: 0
-    SpawnPriority: 3
-  SpawnDelay: .25
-  DifficultyLevel: 1
-  MaxWaveLength: 30
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -61,5 +50,5 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 119944}
+  m_RootGameObject: {fileID: 150852}
   m_IsPrefabParent: 1

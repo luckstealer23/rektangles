@@ -36,4 +36,10 @@ public class BulletScript : MonoBehaviour {
             Destroy(gameObject);
         }
 	}
+
+    void OnCollisionEnter2D (Collision2D coll)
+    {
+        Destroy(gameObject);
+        //add explosion of sorts here
+    }
 }
