@@ -97,6 +97,11 @@ public class WaveGenerator : MonoBehaviour {
                         }
                     }
                 }
+                else
+                {
+                    //all enemies spawned; exit the loop
+                    currentEnemyFinished = true;
+                }
 
             }
         }
