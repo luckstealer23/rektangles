@@ -41,15 +41,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EnemiesToSpawn:
   - EnemyPrefab: {fileID: 155430, guid: 46571870162a97143a49e8c2465634fd, type: 2}
-    EnemyAmount: 10
+    EnemyAmount: 1000
     SpawnPriority: 1
   - EnemyPrefab: {fileID: 188008, guid: 665809424e31cb7449fcb13516932580, type: 2}
-    EnemyAmount: 10
+    EnemyAmount: 0
     SpawnPriority: 2
   - EnemyPrefab: {fileID: 102182, guid: 6cbacc4de0156164889e25fa22257882, type: 2}
-    EnemyAmount: 10
+    EnemyAmount: 0
     SpawnPriority: 3
-  SpawnDelay: .100000001
+  SpawnDelay: .0500000007
   DifficultyLevel: 1
   MaxWaveLength: 30
 --- !u!1001 &100100000

@@ -87,6 +87,33 @@ NavMeshSettings:
     cellSize: .166666672
     manualCellSize: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &57442217
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 57442218}
+  m_Layer: 0
+  m_Name: testspawnpoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &57442218
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 57442217}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 30, y: 20, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
 --- !u!1 &115243864
 GameObject:
   m_ObjectHideFlags: 0
@@ -98,7 +125,7 @@ GameObject:
   - 114: {fileID: 115243865}
   m_Layer: 0
   m_Name: WaveManager
-  m_TagString: Untagged
+  m_TagString: WaveManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -114,11 +141,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf006b8edfac9ed43bcb7d1f4a5ac6a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Waves:
-  - {fileID: 11483574, guid: 6ec92149b7ce54447b32d8cdfdfcb7a4, type: 2}
-  WavePause: 0
-  DoSpawnWaves: 1
-  SpawnPoints: []
+  WavePrefabs:
+  - {fileID: 119944, guid: 6ec92149b7ce54447b32d8cdfdfcb7a4, type: 2}
+  - {fileID: 194818, guid: ee65f0b3d3ce79140b03ba545ab7faad, type: 2}
+  WavePause: 3
+  DoSpawnWaves: 0
+  SpawnPoints:
+  - {fileID: 57442218}
   RandomSeed: 0
 --- !u!4 &115243866
 Transform:

@@ -11,12 +11,15 @@ public class EnemyScript : MonoBehaviour {
     public float damage;
     Camera cam;
     Screenshake shake;
+    GameObject waveManager;
+
 
 	// Use this for initialization
 	void Start () {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         cam = GameObject.FindObjectOfType<Camera>();
         shake = (Screenshake) cam.GetComponent(typeof (Screenshake));
+        waveManager = GameObject.FindGameObjectWithTag("WaveManager");
 	}
 	
 	// Update is called once per frame
@@ -68,5 +71,10 @@ public class EnemyScript : MonoBehaviour {
             }
             Destroy(bullet);
         }
+    }
+
+    void OnDestroy()
+    {
+        waveManager.GetComponent<WaveGenerator>().EnemyDied();
     }
 }

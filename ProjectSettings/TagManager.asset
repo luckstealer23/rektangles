@@ -8,6 +8,7 @@ TagManager:
   - Bullet
   - Explosion
   - SpawnPoint
+  - WaveManager
   layers:
   - Default
   - TransparentFX

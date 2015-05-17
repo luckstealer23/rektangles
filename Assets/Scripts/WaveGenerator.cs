@@ -5,31 +5,108 @@ using Random = UnityEngine.Random;
 
 public class WaveGenerator : MonoBehaviour {
 
+
+    public GameObject[] WavePrefabs;
     //Get all the Waves that can be spawned here
-    public WaveScript[] Waves;
+    List<WaveScript> Waves = new List<WaveScript>();
     //pause between the player finishing one wave and spawning the next
     public float WavePause;
     //Determines wether the WaveGenerator should be active (the game has started)
-    public bool DoSpawnWaves = true;
+    public bool DoSpawnWaves = false;
     //sets the Spawnpoints (will be set by the MapManager)
     public List<Transform> SpawnPoints = new List<Transform>();
 
-    int livingEnemies = 0;
+    //general administrative variables
     public int RandomSeed;
+    int difficulty = 1;
+    float waveDelayTimer;
+
+
+
+    //variables used for actually spawning the wave
+    int livingEnemies = 0;
+    WaveScript thisWave = new WaveScript();
+    float waveStartedTime;
+    int currentEnemyIndex = 0;
+    float lastEnemySpawnedTime = 0;
+    bool waveSpawning = false;
+
+
+
+
 
 	// Use this for initialization
 	void Start () {
         RandomSeed = Random.Range(1, 10000);
         Random.seed = RandomSeed;
+
+        foreach (GameObject wavePrefab in WavePrefabs)
+        {
+            GameObject toBeAdded = (Instantiate(wavePrefab, new Vector3(0, 0, 0), new Quaternion())) as GameObject;
+            Waves.Add(toBeAdded.GetComponent<WaveScript>());
+        }
 	}
 	
+  
+
+
 	// Update is called once per frame
 	void Update () {
 	    if (DoSpawnWaves)
         {
-            if (Input.GetKeyDown(KeyCode.P))
-                SpawnWave(1);
+            if (nextWave() && Time.time >= waveDelayTimer + WavePause)
+            {
+                SpawnWave(difficulty);
+                waveStartedTime = Time.time;
+            }
+
+            //is it time to spawn a new enemy?
+            if (waveSpawning)
+            {
+                //Debug.Log("waveSpawning = true");
+                if (Time.time >= lastEnemySpawnedTime + thisWave.SpawnDelay)
+                {
+                    //Debug.Log("Time to spawn something");
+                    //do this for each spawn point
+                    foreach (Transform currenSpawnPoint in SpawnPoints)
+                    {
+                        if (thisWave.EnemiesToSpawn[currentEnemyIndex].EnemyAmount > 0)
+                        {
+                            Debug.Log("spawned an enemy!");
+                            Instantiate(thisWave.EnemiesToSpawn[currentEnemyIndex].EnemyPrefab, currenSpawnPoint.position, new Quaternion());
+                            livingEnemies += 1;
+                            thisWave.EnemiesToSpawn[currentEnemyIndex].EnemyAmount -= 1;
+                            lastEnemySpawnedTime = Time.time;
+                        }
+                        //if the last type of enemy spawned isnt the last one in the list, then go to the next enemy in the list
+                        else if (currentEnemyIndex < thisWave.EnemiesToSpawn.Count - 1)
+                        {
+                            currentEnemyIndex += 1;
+                            Debug.Log("Next type of enemy!");
+                            Debug.Log("Enemy types to spawn count: " + thisWave.EnemiesToSpawn.Count);
+                            Debug.Log("currentEnemyIndex: " + currentEnemyIndex);
+                        }
+                        //if every enemy has been spawned turn off wave spawning to save on unnecessary calculations
+                        else
+                        {
+                            lastEnemySpawnedTime = 0;
+                            waveSpawning = false;
+                            difficulty += 1;
+                            waveDelayTimer = Time.time;
+
+                            Debug.Log("Wave spawning finished!");
+                        }
+                        
+
+                    }
+                    
+
+                }
+            }
+            
         }
+        if (Input.GetKeyDown(KeyCode.P))
+            DoSpawnWaves = !DoSpawnWaves;
 	}
 
 
@@ -45,75 +122,29 @@ public class WaveGenerator : MonoBehaviour {
                 randomWaves.Add(w);
             }
         }
-        if (randomWaves.Capacity != 0)
-        {
-            InstantiateEnemies(randomWaves[Random.Range(0, randomWaves.Count)]);
 
+        if (randomWaves.Count != 0)
+        {
+            //make the current wave the one that has been randomly selected
+            
+            thisWave = randomWaves[Random.Range(0, randomWaves.Count)];
+            //sort the current wave by enemy priority
+            thisWave.EnemiesToSpawn.Sort(SortBySpawnPriority);
+            //activate the spawning of the current wave
+            waveSpawning = true;
+            //resetting some variables
+            currentEnemyIndex = 0;
+            Debug.Log("Wave spawning started successfully! Difficulty Level: " + waveLevel);
         }
-            //TBRS
         else
         {
-            Debug.Log("no random waves!!");
+            //since there is no current wave (should never happen!!!) since there wasnt one that had the required difficulty level disable wave spawning
+            waveSpawning = false;
+            Debug.Log("Critical Error! No wave with required difficulty level found! (For difficulty level: " + waveLevel + ")");
         }
-            //TBRE
-
     }
 
-    void InstantiateEnemies(WaveScript wave)
-    {
-        /*
-        Debug.Log("diff " + wave.DifficultyLevel);
-        Debug.Log("number " + wave.EnemiesToSpawn[0].EnemyAmount);
-        Debug.Log("name " + wave.EnemiesToSpawn[0].EnemyPrefab.name);
-        Debug.Log("prio " + wave.EnemiesToSpawn[0].SpawnPriority);
-        */
-
-        //Makes a local copy of the WaveScript so we can mess with it
-        WaveScript thisWave = wave;
-        //used to make enemies spawn at the specified rate
-        float currentSpawnTime = Time.time;
-        //sorts the WaveScript by the spawnpriority of the enemies
-        thisWave.EnemiesToSpawn.Sort(SortBySpawnPriority);
-        //iterates through each type of enemy by their priority
-        foreach (WaveScript.EnemyInfo currentEnemy in thisWave.EnemiesToSpawn)
-        {
-            /*
-             //code not finished. please do not uncomment --> might crash the things that are working now 
-             
-            //used so the loop runs until all enemies are finished
-            bool currentEnemyFinished = false;
-            int currentEnemiesSpawned = 0;
-
-            while (!currentEnemyFinished)
-            {
-
-               
-                if (currentEnemy.EnemyAmount < currentEnemiesSpawned)
-                {
-                    //Ensures enemies are spawned at each spawn point if possible. spawn point will be randomized if there are less enemies remaining to be spawned than there are spawnpoints
-                    //e.g. you need to spawn 3 enemies, but you have 4 spawn points --> spawns will be random;
-                    if (currentEnemy.EnemyAmount >= SpawnPoints.Count)
-                    {
-                        foreach (Transform currentSpawnPoint in SpawnPoints)
-                        {
-                            //Instantiate enemy
-                        }
-                    }
-                }
-                else
-                {
-                    //all enemies spawned; exit the loop
-                    currentEnemyFinished = true;
-                }
-
-            }
-             
-             * */
-        }
-        
-
-    }
-
+    
     //used to sort the enemies to be spawned by their priority value
     private static int SortBySpawnPriority(WaveScript.EnemyInfo e1, WaveScript.EnemyInfo e2)
     {
@@ -122,8 +153,22 @@ public class WaveGenerator : MonoBehaviour {
 
     public void EnemyDied()
     {
-
+        livingEnemies -= 1;
+        Debug.Log(livingEnemies);
     }
 
+
+    bool nextWave()
+    {
+        if (Time.time - waveStartedTime >= thisWave.MaxWaveLength || livingEnemies <= 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+
+    }
      
 }
