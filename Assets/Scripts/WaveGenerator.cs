@@ -77,6 +77,9 @@ public class WaveGenerator : MonoBehaviour {
         //iterates through each type of enemy by their priority
         foreach (WaveScript.EnemyInfo currentEnemy in thisWave.EnemiesToSpawn)
         {
+            /*
+             //code not finished. please do not uncomment --> might crash the things that are working now 
+             
             //used so the loop runs until all enemies are finished
             bool currentEnemyFinished = false;
             int currentEnemiesSpawned = 0;
@@ -104,6 +107,8 @@ public class WaveGenerator : MonoBehaviour {
                 }
 
             }
+             
+             * */
         }
         
 
