@@ -118,6 +118,7 @@ MonoBehaviour:
   - {fileID: 11483574, guid: 6ec92149b7ce54447b32d8cdfdfcb7a4, type: 2}
   WavePause: 0
   DoSpawnWaves: 1
+  SpawnPoints: []
   RandomSeed: 0
 --- !u!4 &115243866
 Transform:
