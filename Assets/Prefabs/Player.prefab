@@ -187,10 +187,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 683fcadb6b65cc74fac3a98347e96102, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireRate: 30
+  fireRate: 10
   damage: 1
   bullet: {fileID: 109322, guid: 910807a8193b15c40a295dc319c2db2d, type: 2}
-  bulletSpeed: 65
+  bulletSpeed: 100
   audioClip: {fileID: 8300000, guid: d096c92618009464fa1d243df6a9f36a, type: 3}
 --- !u!114 &11460940
 MonoBehaviour:
