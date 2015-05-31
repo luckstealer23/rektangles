@@ -786,7 +786,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fb15d399e5c15242bc25277a4c84a13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnPoint: {x: 0, y: 0, z: 0}
+  spawnPoint: {x: 50, y: 50, z: 0}
   diff: 1
   enemy: {fileID: 155430, guid: 46571870162a97143a49e8c2465634fd, type: 2}
 --- !u!1001 &2081643415
