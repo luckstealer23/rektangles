@@ -74,7 +74,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 141984}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -4}
+  m_LocalPosition: {x: 0, y: 0, z: -8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 414026}
@@ -97,7 +97,7 @@ Rigidbody2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 105262}
-  m_Mass: 1e+06
+  m_Mass: 10
   m_LinearDrag: 0
   m_AngularDrag: 0
   m_GravityScale: 0
@@ -216,7 +216,7 @@ Light:
   m_Type: 2
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 6
-  m_Range: 10
+  m_Range: 20
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
@@ -250,8 +250,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireRate: 10
   damage: 1
-  bullet: {fileID: 109322, guid: 910807a8193b15c40a295dc319c2db2d, type: 2}
-  bulletSpeed: 100
+  bullet: {fileID: 165486, guid: 95c8dc01f4ea19d4ca6c8e21992e7675, type: 2}
+  bulletSpeed: 25
   audioClip: {fileID: 8300000, guid: d096c92618009464fa1d243df6a9f36a, type: 3}
 --- !u!114 &11460940
 MonoBehaviour:

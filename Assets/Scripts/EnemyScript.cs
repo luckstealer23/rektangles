@@ -27,12 +27,17 @@ public class EnemyScript : MonoBehaviour {
         //var mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Quaternion rot = Quaternion.LookRotation(transform.position - new Vector3(player.transform.position.x, player.transform.position.y, -10), Vector3.forward);
 
-        transform.rotation = rot;
-        transform.eulerAngles = new Vector3(0, 0, transform.eulerAngles.z);
+        //transform.rotation = rot;
+        
+        //transform.eulerAngles = new Vector3(0, 0, transform.eulerAngles.z);
+        //Quaternion.ToEulerAngles(rot).z
+        GetComponent<Rigidbody2D>().MoveRotation(rot.eulerAngles.z);
+        
 
         Vector3 move = new Vector3(player.transform.position.x - transform.position.x, player.transform.position.y - transform.position.y, 0);
         move.Normalize();
-        GetComponent<Rigidbody2D>().velocity = new Vector2(move.x * speed, move.y * speed);
+        GetComponent<Rigidbody2D>().MovePosition(new Vector2(transform.position.x + move.x * speed,transform.position.y + move.y * speed));
+        //GetComponent<Rigidbody2D>().velocity = new Vector2(move.x * speed, move.y * speed);
  
        
 	}
@@ -69,7 +74,7 @@ public class EnemyScript : MonoBehaviour {
                 // start screenshake
                 shake.Shake(2f, 0.8f);
             }
-            Destroy(bullet);
+            //Destroy(bullet);
         }
     }
 
